@@ -7,7 +7,21 @@ const theme = useTheme()
 function onClick() {
   theme.global.name.value = theme.global.name.value === 'light' ? 'dark' : 'light'
 }
-const text = ref('')
+const firstName = ref('')
+const firstNameRules = [
+  (value) => {
+    if (value?.length >= 3) return true
+    return 'First name must be at least 3 characters.'
+  },
+]
+
+const lastName = ref('123')
+const lastNameRules = [
+  (value) => {
+    if (/[^0-9]/.test(value)) return true
+    return 'Last name can not contain digits.'
+  },
+]
 </script>
 
 <template>
@@ -27,6 +41,7 @@ const text = ref('')
 
     <v-main>
       <v-container fluid class="fill-height d-flex align-center justify-center">
+        <img src="@/assets/img/1.png" alt="" style="max-width: 50%" />
         <v-sheet class="mx-auto" width="300">
           <v-form fast-fail @submit.prevent>
             <v-text-field
