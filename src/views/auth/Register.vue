@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { useTheme } from 'vuetify' // Import useTheme
 
 const router = useRouter()
 
@@ -10,6 +11,8 @@ const email = ref('')
 const password = ref('')
 const password_confirmation = ref('')
 const isSubmitting = ref(false)
+
+const theme = useTheme() // Get current theme
 
 const register = async () => {
   isSubmitting.value = true
@@ -39,25 +42,78 @@ const register = async () => {
 </script>
 
 <template>
-  <v-sheet class="mx-auto" width="400" elevation="4" rounded>
-    <h3 class="text-center py-4">Register</h3>
-    <v-form @submit.prevent="register" class="pa-4">
-      <v-text-field v-model="name" label="Name" required></v-text-field>
-
-      <v-text-field v-model="email" label="Email" type="email" required></v-text-field>
-
-      <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
-
-      <v-text-field
-        v-model="password_confirmation"
-        label="Confirm Password"
-        type="password"
-        required
-      ></v-text-field>
-
-      <v-btn :loading="isSubmitting" type="submit" color="primary" block class="mt-4">
+  <v-container height="100vh" class="d-flex align-center justify-center mx-auto">
+    <v-sheet
+      width="400"
+      elevation="8"
+      rounded
+      :color="theme.global.name.value === 'light' ? 'white' : 'grey-darken-3'"
+      :dark="theme.global.name.value === 'dark'"
+    >
+      <h3
+        class="text-center py-4"
+        :class="theme.global.name.value === 'light' ? 'text-dark' : 'text-white'"
+      >
         Register
-      </v-btn>
-    </v-form>
-  </v-sheet>
+      </h3>
+      <v-form @submit.prevent="register" class="pa-4">
+        <v-text-field
+          v-model="name"
+          label="Name"
+          required
+          :outlined="true"
+          :color="theme.global.name.value === 'light' ? 'primary' : 'secondary'"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="email"
+          label="Email"
+          type="email"
+          required
+          :outlined="true"
+          :color="theme.global.name.value === 'light' ? 'primary' : 'secondary'"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="password"
+          label="Password"
+          type="password"
+          required
+          :outlined="true"
+          :color="theme.global.name.value === 'light' ? 'primary' : 'secondary'"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="password_confirmation"
+          label="Confirm Password"
+          type="password"
+          required
+          :outlined="true"
+          :color="theme.global.name.value === 'light' ? 'primary' : 'secondary'"
+        ></v-text-field>
+
+        <v-btn
+          :loading="isSubmitting"
+          type="submit"
+          :color="theme.global.name.value === 'light' ? 'primary' : 'secondary'"
+          block
+          class="mt-4"
+        >
+          Register
+        </v-btn>
+
+        <router-link to="/" class="text-decoration-none">
+          <v-btn
+            :loading="isSubmitting"
+            type="button"
+            block
+            :color="theme.global.name.value === 'light' ? 'cyan' : 'cyan-darken-4'"
+            class="mt-4"
+          >
+            Login
+          </v-btn>
+        </router-link>
+      </v-form>
+    </v-sheet>
+  </v-container>
 </template>

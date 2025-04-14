@@ -12,9 +12,13 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+const savedTheme = localStorage.getItem('theme') || 'light'
 const vuetify = createVuetify({
   components,
   directives,
+  theme: {
+    defaultTheme: savedTheme,
+  },
 })
 
 const app = createApp(App)

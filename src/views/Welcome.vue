@@ -4,8 +4,15 @@ import Login from '@/components/Auth/Login.vue'
 
 const theme = useTheme()
 
+const savedTheme = localStorage.getItem('theme')
+if (savedTheme) {
+  theme.global.name.value = savedTheme
+}
+
 function onClick() {
-  theme.global.name.value = theme.global.name.value === 'light' ? 'dark' : 'light'
+  const newTheme = theme.global.name.value === 'light' ? 'dark' : 'light'
+  theme.global.name.value = newTheme
+  localStorage.setItem('theme', newTheme) // Save the selected theme
 }
 </script>
 
