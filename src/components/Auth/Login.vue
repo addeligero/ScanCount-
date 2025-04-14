@@ -43,6 +43,7 @@ const login = async () => {
       <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
 
       <v-btn :loading="isSubmitting" class="mt-2" type="submit" block> Submit </v-btn>
+      <p class="pt-2">Don't have account? <a href="/register">click here</a></p>
     </v-form>
   </v-sheet>
 </template>
