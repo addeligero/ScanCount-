@@ -27,7 +27,7 @@ const fetchUser = async () => {
 
 onMounted(() => {
   if (!localStorage.getItem('token')) {
-    router.push('/login')
+    router.push('/')
   } else {
     fetchUser()
   }
@@ -68,9 +68,7 @@ onMounted(() => {
                   <v-icon>mdi-chart-line</v-icon>
                   &nbsp; Sales Overview
                 </v-card-title>
-                <v-card-text>
-                  <v-chart :data="chartData"></v-chart>
-                </v-card-text>
+                <v-card-text> </v-card-text>
               </v-card>
             </v-col>
 
@@ -80,16 +78,7 @@ onMounted(() => {
                   <v-icon>mdi-calendar-check</v-icon>
                   &nbsp; Tasks Overview
                 </v-card-title>
-                <v-card-text>
-                  <v-list>
-                    <v-list-item v-for="task in tasks" :key="task.id">
-                      <v-list-item-content>
-                        <v-list-item-title>{{ task.name }}</v-list-item-title>
-                        <v-list-item-subtitle>{{ task.dueDate }}</v-list-item-subtitle>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list>
-                </v-card-text>
+                <v-card-text> </v-card-text>
               </v-card>
             </v-col>
           </v-row>
