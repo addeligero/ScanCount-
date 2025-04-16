@@ -24,7 +24,7 @@ const login = async () => {
 
     localStorage.setItem('token', response.data.access_token)
     alert('Login successful!')
-    router.push('/home')
+    router.push('/dashboard')
   } catch (error) {
     console.error('Login failed:', error)
     alert(error.response?.data?.message || 'Invalid login credentials.')
@@ -35,7 +35,7 @@ const login = async () => {
 </script>
 
 <template>
-  <v-sheet class="mx-auto" width="300">
+  <v-sheet class="mx-auto py-4 rounded-lg" width="300">
     <h3 class="text-center">Login</h3>
     <v-form fast-fail @submit.prevent="login">
       <v-text-field v-model="email" label="Email" type="email" required></v-text-field>
