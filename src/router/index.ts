@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from '../views/Welcome.vue'
 import Register from '@/views/auth/Register.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import PageError from '@/views/PageError.vue'
 
 // Mock function to check if the user is logged in
 const isLoggedIn = () => !!localStorage.getItem('token')
