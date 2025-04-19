@@ -25,6 +25,11 @@ const router = createRouter({
       name: 'Dashboard',
       component: Dashboard,
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'PageError',
+      component: PageError,
+    },
   ],
 })
 
@@ -32,12 +37,9 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const loggedIn = isLoggedIn()
 
-  // Redirect logged-in users away from Welcome and Register pages
   if ((to.path === '/' || to.path === '/register') && loggedIn) {
     next('/dashboard')
-  }
-  // Prevent logged-out users from accessing the Dashboard
-  else if (to.path === '/dashboard' && !loggedIn) {
+  } else if (to.path === '/dashboard' && !loggedIn) {
     next('/')
   }
   // Allow navigation for all other cases
