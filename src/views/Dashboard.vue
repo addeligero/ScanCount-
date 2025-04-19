@@ -8,7 +8,7 @@ const user = ref(null)
 
 const logout = () => {
   localStorage.removeItem('token')
-  router.push('/login')
+  router.push('/')
 }
 
 const fetchUser = async () => {
@@ -21,7 +21,7 @@ const fetchUser = async () => {
     user.value = response.data
   } catch (error) {
     console.error('Failed to fetch user:', error)
-    router.push('/login')
+    router.push('/')
   }
 }
 
