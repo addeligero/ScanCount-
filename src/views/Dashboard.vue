@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import Header from '@/components/Header.vue'
 
 const router = useRouter()
 const user = ref(null)
@@ -35,7 +36,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-container fluid>
+  <v-container fluid class="mt-12">
+    <Header />
     <v-row>
       <v-col cols="12" md="4" lg="3">
         <v-card class="pa-4" elevation="2" rounded>
