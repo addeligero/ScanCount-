@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Header from '@/components/Header.vue'
+import MainContent from '@/components/Dashboard/MainContent.vue'
 
 const router = useRouter()
 const user = ref(null)
@@ -36,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-container fluid class="mt-12">
+  <v-container fluid class="mt-14">
     <Header />
     <v-row>
       <v-col cols="12" md="4" lg="3">
@@ -61,31 +62,7 @@ onMounted(() => {
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="8" lg="9">
-        <v-card class="pa-4" elevation="2" rounded>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-card class="pa-4" elevation="1" rounded>
-                <v-card-title>
-                  <v-icon>mdi-chart-line</v-icon>
-                  &nbsp; Sales Overview
-                </v-card-title>
-                <v-card-text> </v-card-text>
-              </v-card>
-            </v-col>
-
-            <v-col cols="12" md="6">
-              <v-card class="pa-4" elevation="1" rounded>
-                <v-card-title>
-                  <v-icon>mdi-calendar-check</v-icon>
-                  &nbsp; Tasks Overview
-                </v-card-title>
-                <v-card-text> </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-col>
+      <v-col cols="12" md="8" lg="9"><MainContent /> </v-col>
     </v-row>
   </v-container>
 </template>
