@@ -15,7 +15,7 @@ function onClick() {
 
 <template>
   <v-app-bar class="px-3">
-    <h3>ScanCount</h3>
+    <h3>AidFlow</h3>
     <v-spacer></v-spacer>
 
     <v-btn
