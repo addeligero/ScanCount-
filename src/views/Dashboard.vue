@@ -1,68 +1,63 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import axios from 'axios'
-import Header from '@/components/Header.vue'
-import MainContent from '@/components/Dashboard/MainContent.vue'
+import { ref, watch } from 'vue'
 
-const router = useRouter()
-const user = ref(null)
+const items = [
+  {
+    title: 'Foo',
+    value: 'foo',
+  },
+  {
+    title: 'Bar',
+    value: 'bar',
+  },
+  {
+    title: 'Fizz',
+    value: 'fizz',
+  },
+  {
+    title: 'Buzz',
+    value: 'buzz',
+  },
+]
 
-const logout = () => {
-  localStorage.removeItem('token')
-  router.push('/')
-}
+const drawer = ref(false)
+const group = ref(null)
 
-const fetchUser = async () => {
-  try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-    user.value = response.data
-  } catch (error) {
-    console.error('Failed to fetch user:', error)
-    router.push('/')
-  }
-}
-
-onMounted(() => {
-  if (!localStorage.getItem('token')) {
-    router.push('/')
-  } else {
-    fetchUser()
-  }
+watch(group, () => {
+  drawer.value = false
 })
 </script>
 
 <template>
-  <v-container fluid class="mt-14">
-    <Header />
-    <v-row>
-      <v-col cols="12" md="4" lg="3">
-        <v-card class="pa-4" elevation="2" rounded>
-          <v-avatar size="120" class="mb-4">
-            <img v-if="user && user.avatar_url" :src="user.avatar_url" alt="User Avatar" />
-            <v-icon v-else>mdi-account</v-icon>
-          </v-avatar>
+  <v-card>
+    <v-layout>
+      <v-app-bar color="primary">
+        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-          <v-divider></v-divider>
+        <v-toolbar-title>My files</v-toolbar-title>
 
-          <v-list>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title class="headline">{{ user?.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ user?.email }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
+        <template v-if="$vuetify.display.mdAndUp">
+          <v-btn icon="mdi-magnify" variant="text"></v-btn>
 
-          <v-btn color="error" block @click="logout">Logout</v-btn>
-        </v-card>
-      </v-col>
+          <v-btn icon="mdi-filter" variant="text"></v-btn>
+        </template>
 
-      <v-col cols="12" md="8" lg="9"><MainContent /> </v-col>
-    </v-row>
-  </v-container>
+        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer
+        v-model="drawer"
+        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        temporary
+      >
+        <v-list :items="items"></v-list>
+      </v-navigation-drawer>
+
+      <v-main style="height: 500px">
+        <v-card-text>
+          The navigation drawer will appear from the bottom on smaller size screens.
+        </v-card-text>
+      </v-main>
+    </v-layout>
+  </v-card>
 </template>
