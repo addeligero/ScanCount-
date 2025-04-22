@@ -1,8 +1,13 @@
-<script></script>
+<script setup>
+defineProps({
+  toggleDrawer: Function,
+})
+</script>
+
 <template>
-  <h3>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ad, suscipit odio iusto,
-    alias optio, ipsa sint voluptatem incidunt nobis fugiat quibusdam animi veniam quas blanditiis
-    eos non placeat libero.
-  </h3>
+  <v-main style="height: 100vh">
+    <div class="d-flex justify-center align-center h-100">
+      <v-btn color="primary" @click="toggleDrawer">Toggle</v-btn>
+    </div>
+  </v-main>
 </template>

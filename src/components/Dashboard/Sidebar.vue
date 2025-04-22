@@ -1,12 +1,16 @@
 <script setup>
-import { ref, defineExpose } from 'vue'
-
-const drawer = ref(false)
-defineExpose({ drawer })
+defineProps({
+  modelValue: Boolean,
+})
+defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <v-navigation-drawer v-model="drawer" temporary>
+  <v-navigation-drawer
+    :model-value="modelValue"
+    @update:model-value="$emit('update:modelValue', $event)"
+    temporary
+  >
     <v-list-item
       prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
       title="John Leider"
