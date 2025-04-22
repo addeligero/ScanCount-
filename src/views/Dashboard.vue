@@ -1,62 +1,28 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
-const items = [
-  {
-    title: 'Foo',
-    value: 'foo',
-  },
-  {
-    title: 'Bar',
-    value: 'bar',
-  },
-  {
-    title: 'Fizz',
-    value: 'fizz',
-  },
-  {
-    title: 'Buzz',
-    value: 'buzz',
-  },
-]
-
-const drawer = ref(false)
-const group = ref(null)
-
-watch(group, () => {
-  drawer.value = false
-})
+const drawer = ref(null)
 </script>
-
 <template>
   <v-card>
     <v-layout>
-      <v-app-bar color="primary">
-        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-navigation-drawer v-model="drawer" temporary>
+        <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+          title="John Leider"
+        ></v-list-item>
 
-        <v-toolbar-title>My files</v-toolbar-title>
+        <v-divider></v-divider>
 
-        <template v-if="$vuetify.display.mdAndUp">
-          <v-btn icon="mdi-magnify" variant="text"></v-btn>
-
-          <v-btn icon="mdi-filter" variant="text"></v-btn>
-        </template>
-
-        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
-      </v-app-bar>
-
-      <v-navigation-drawer
-        v-model="drawer"
-        :location="$vuetify.display.mobile ? 'bottom' : undefined"
-        temporary
-      >
-        <v-list :items="items"></v-list>
+        <v-list density="compact" nav>
+          <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
+          <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
+        </v-list>
       </v-navigation-drawer>
-
-      <v-main style="height: 500px">
-        <v-card-text>
-          The navigation drawer will appear from the bottom on smaller size screens.
-        </v-card-text>
+      <v-main style="height: 100vh">
+        <div class="d-flex justify-center align-center h-100">
+          <v-btn color="primary" @click.stop="drawer = !drawer"> Toggle </v-btn>
+        </div>
       </v-main>
     </v-layout>
   </v-card>
