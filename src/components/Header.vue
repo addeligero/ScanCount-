@@ -1,24 +1,6 @@
 <script setup>
 import { useTheme } from 'vuetify'
-import { watch } from 'vue'
-const items = [
-  {
-    title: 'Foo',
-    value: 'foo',
-  },
-  {
-    title: 'Bar',
-    value: 'bar',
-  },
-  {
-    title: 'Fizz',
-    value: 'fizz',
-  },
-  {
-    title: 'Buzz',
-    value: 'buzz',
-  },
-]
+import { watch, ref } from 'vue'
 
 const drawer = ref(false)
 const group = ref(null)
