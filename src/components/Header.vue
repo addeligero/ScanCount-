@@ -43,8 +43,8 @@ watch(group, () => {
       @click="onClick"
     ></v-btn>
 
-    <v-btn color="primary" @click="toggleDrawer">
-      <v-app-bar-nav-icon variant="text"></v-app-bar-nav-icon>
+    <v-btn @click="toggleDrawer">
+      <v-app-bar-nav-icon class="fill-height" variant="text"></v-app-bar-nav-icon>
     </v-btn>
   </v-app-bar>
 </template>
