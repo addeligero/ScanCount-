@@ -1,14 +1,14 @@
 <script setup>
-defineProps({
+const props = defineProps({
   modelValue: Boolean,
 })
-defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
   <v-navigation-drawer
-    :model-value="modelValue"
-    @update:model-value="$emit('update:modelValue', $event)"
+    :model-value="props.modelValue"
+    @update:model-value="emit('update:modelValue', $event)"
     temporary
   >
     <v-list-item
