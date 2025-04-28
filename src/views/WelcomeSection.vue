@@ -1,6 +1,6 @@
-<script setup>
-import Login from '@/components/Auth/Login.vue'
-import Header from '@/components/Header.vue'
+<script setup lang="ts">
+import Login from '@/components/Auth/LoginForm.vue'
+import Header from '@/components/HeaderSection.vue'
 </script>
 
 <template>

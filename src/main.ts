@@ -36,7 +36,7 @@ const vuetify = createVuetify({
       dark: {
         colors: {
           background: '#121212',
-          surface: '#424242', // <== gray surface for dark mode
+          surface: '#424242',
           primary: '#bb86fc',
           secondary: '#03dac6',
           error: '#cf6679',

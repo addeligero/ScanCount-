@@ -12,14 +12,4 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  computed: {
-    isDarkMode() {
-      return this.$vuetify.theme.global.name.value === 'dark'
-    },
-  },
-}
-</script>
-
 <style scoped></style>
