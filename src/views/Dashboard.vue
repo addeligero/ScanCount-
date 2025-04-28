@@ -12,14 +12,22 @@ const toggleDrawer = () => {
 
 <template>
   <Sidebar v-model="drawer" />
+
   <Header :toggleDrawer="toggleDrawer" />
-  <Main />
+
+  <div class="main-content">
+    <Main />
+  </div>
 </template>
 
 <style scoped>
 .main-content {
+  margin-top: 50px; /* Adjust based on your header's height */
+}
+
+.main-content {
   position: relative;
-  z-index: 999;
+
   padding: 2rem;
 }
 

@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="main-content d-flex flex-column align-center justify-center"
-    :class="{ 'dark-mode': isDarkMode }"
+    :color="isDarkMode ? 'surface' : 'white'"
     elevation="2"
     width="100%"
     height="100%"
@@ -16,14 +16,10 @@
 export default {
   computed: {
     isDarkMode() {
-      return this.$vuetify.theme.dark
+      return this.$vuetify.theme.global.name.value === 'dark'
     },
   },
 }
 </script>
 
-<style scoped>
-.dark-mode {
-  background-color: black;
-}
-</style>
+<style scoped></style>
