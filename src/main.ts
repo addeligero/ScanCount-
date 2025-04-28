@@ -1,6 +1,6 @@
-//import './assets/main.css'
+// import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
@@ -20,6 +20,32 @@ const vuetify = createVuetify({
   directives,
   theme: {
     defaultTheme: savedTheme,
+    themes: {
+      light: {
+        colors: {
+          background: '#ffffff',
+          surface: '#ffffff',
+          primary: '#6200ea',
+          secondary: '#03dac6',
+          error: '#b00020',
+          info: '#2196f3',
+          success: '#4caf50',
+          warning: '#fb8c00',
+        },
+      },
+      dark: {
+        colors: {
+          background: '#121212',
+          surface: '#121212',
+          primary: '#bb86fc',
+          secondary: '#03dac6',
+          error: '#cf6679',
+          info: '#2196f3',
+          success: '#4caf50',
+          warning: '#fb8c00',
+        },
+      },
+    },
   },
 })
 
@@ -28,5 +54,14 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)
+
+// Watch for changes to the theme and update localStorage
+watch(
+  () => vuetify.theme.dark,
+  (newTheme) => {
+    const theme = newTheme ? 'dark' : 'light'
+    localStorage.setItem('theme', theme)
+  },
+)
 
 app.mount('#app')

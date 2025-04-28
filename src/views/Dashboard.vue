@@ -12,7 +12,7 @@ const toggleDrawer = () => {
 
 <template>
   <Sidebar v-model="drawer" />
-
+  <Header :toggleDrawer="toggleDrawer" />
   <Main />
 </template>
 
