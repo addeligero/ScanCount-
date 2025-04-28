@@ -3,6 +3,12 @@ const props = defineProps({
   modelValue: Boolean,
 })
 const emit = defineEmits(['update:modelValue'])
+
+// Logout function
+const logout = () => {
+  localStorage.removeItem('token')
+  window.location.href = '/'
+}
 </script>
 
 <template>
@@ -22,5 +28,20 @@ const emit = defineEmits(['update:modelValue'])
       <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
       <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
     </v-list>
+
+    <v-spacer></v-spacer>
+
+    <v-btn block color="error" class="mt-4 logout-btn" prepend-icon="mdi-logout" @click="logout">
+      Logout
+    </v-btn>
   </v-navigation-drawer>
 </template>
+
+<style scoped>
+.logout-btn {
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+</style>

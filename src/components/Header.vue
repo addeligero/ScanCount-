@@ -1,6 +1,6 @@
 <script setup>
 import { useTheme } from 'vuetify'
-import { watch, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 
 // Props
 const { toggleDrawer } = defineProps({
@@ -21,11 +21,30 @@ function onClick() {
   localStorage.setItem('theme', newTheme)
 }
 
-// Optional drawer group logic
 const drawer = ref(false)
 const group = ref(null)
+const userStatus = ref('')
+
+// Check user status
+const checkStatus = () => {
+  const token = localStorage.getItem('token')
+  userStatus.value = token ? 'loggedIn' : 'loggedOut'
+}
+
 watch(group, () => {
-  drawer.value = false
+  drawer.value = true
+  checkStatus()
+})
+
+onMounted(() => {
+  if (userStatus.value === 'loggedIn') {
+    drawer.value = true
+    toggleDrawer()
+  } else {
+    drawer.value = false
+  }
+
+  checkStatus()
 })
 </script>
 
@@ -43,7 +62,8 @@ watch(group, () => {
       @click="onClick"
     ></v-btn>
 
-    <v-btn @click="toggleDrawer">
+    <!-- Show the toggle drawer icon only if the user is logged in -->
+    <v-btn v-if="userStatus === 'loggedIn'" @click="toggleDrawer">
       <v-app-bar-nav-icon class="fill-height" variant="text"></v-app-bar-nav-icon>
     </v-btn>
   </v-app-bar>

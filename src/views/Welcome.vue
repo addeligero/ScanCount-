@@ -1,10 +1,12 @@
 <script setup>
 import Login from '@/components/Auth/Login.vue'
+import Header from '@/components/Header.vue'
 </script>
 
 <template>
   <v-app>
     <v-main>
+      <Header />
       <v-container fluid class="fill-height d-flex align-center justify-center">
         <img src="@/assets/img/1.png" alt="" style="max-width: 50%" />
         <Login />

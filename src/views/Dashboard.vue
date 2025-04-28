@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Sidebar from '@/components/Dashboard/Sidebar.vue'
 import Header from '@/components/Header.vue'
+import Main from '@/components/Dashboard/Main.vue'
 
 const drawer = ref(false)
 const toggleDrawer = () => {
@@ -11,7 +12,8 @@ const toggleDrawer = () => {
 
 <template>
   <Sidebar v-model="drawer" />
-  <Header :toggleDrawer="toggleDrawer" />
+
+  <Main />
 </template>
 
 <style scoped>
