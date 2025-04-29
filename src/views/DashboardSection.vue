@@ -22,13 +22,11 @@ const toggleDrawer = () => {
 
 <style scoped>
 .main-content {
-  margin-top: 50px; /* Adjust based on your header's height */
+  margin-top: 20px;
 }
 
 .main-content {
-  position: relative;
-
-  padding: 2rem;
+  margin-top: 50px;
 }
 
 .content-wrapper {
