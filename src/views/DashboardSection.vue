@@ -26,7 +26,7 @@ const toggleDrawer = () => {
 }
 
 .main-content {
-  margin-top: 50px;
+  margin-top: -10px;
 }
 
 .content-wrapper {

@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import image from '@/assets/img/Dashboard/family.jpg'
+import image1 from '@/assets/img/Dashboard/family.jpg'
+
+const images = [
+  image1,
+  'https://via.placeholder.com/800x400',
+  'https://via.placeholder.com/800x400',
+]
 </script>
 
 <template>
-  <v-container class="" width="100%" fluid>
-    <v-img
-      :src="image"
-      max-height="400"
-      width="100%"
-      contain
-      class="rounded elevation-3 rounded-lg"
-      alt="Family Image"
-    ></v-img>
-  </v-container>
+  <v-carousel height="400" show-arrows="hover" cycle hide-delimiter-background>
+    <v-carousel-item v-for="(img, i) in images" :key="i">
+      <v-img :src="img" height="100%" contain> </v-img>
+    </v-carousel-item>
+  </v-carousel>
 </template>
 
 <style scoped></style>
