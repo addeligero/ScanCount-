@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import Sidebar from '@/components/Dashboard/SidebarContainer.vue'
 import Header from '@/components/HeaderSection.vue'
 import Carousel from '@/components/Dashboard/CarouselSection.vue'
+import IconSection from '@/components/Dashboard/IconSection.vue'
 
 const drawer = ref(false)
 const toggleDrawer = () => {
@@ -17,6 +18,7 @@ const toggleDrawer = () => {
 
   <div class="main-content">
     <Carousel />
+    <IconSection />
   </div>
 </template>
 
